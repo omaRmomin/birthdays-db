@@ -29,17 +29,17 @@ birthday_label[ 'image' ] = heading_image
 #  STYLING-WIDGETS-------------------------------------------------------------------------
 style = ttk.Style()
 
-style.theme_create( 'tab_style', settings = {
+style.theme_create( 'tabs_and_treeview', settings = {
     "." : {
         "configure" : {
             "background" : bg_color,
-            "font" : 'crystal' } },
-    
+            "font" : 'crystal' }
+        },
     "TNotebook" : {
         "configure" : {
             "background" : bg_color,
-            "tabmargins" : [ 2, 5, 0, 0 ] , } },
-    
+            "tabmargins" : [ 2, 5, 0, 0 ] }
+        },
     "TNotebook.Tab" : {
         "configure" : {
             "background" : 'lightpink',
@@ -49,17 +49,28 @@ style.theme_create( 'tab_style', settings = {
             "foreground" : [ ( "selected", 'black') ],
             "background" : [ ( "selected", bg_color ) ],
             "expand" : [ ( "selected", [ 1, 1, 1, 0 ] ) ] }
-} } )
+        },
+    "Treeview" : {
+        "configure" : {
+            "background" : "lightpink",
+            "foreground" : "black",
+            "rowheight"  : 15,
+            "fieldbackground" : "lightpink" },
+        "map" : {
+            "background" : [ ( "selected", "crimson" ) ] },
+        "layout" : [
+            ( "Treeview.treearea", { "sticky" : "nswe" } ) ]
+        },
+    
+    "Treeview.Heading" : {
+        "configure" : {
+            "background" : "mistyrose",
+            "foreground" : "black",
+            "font" : [ "crystal", 10 ] }
+        }
+    } )
  
-style.theme_use( 'tab_style' )
-
-style.configure( 'Treeview', background = 'lightpink', foreground = 'black', 
-                 rowheight = 15, fieldbackground = 'lightpink' )
-style.layout( "Treeview", [ ( 'Treeview.treearea', { 'sticky' : 'nswe' } ) ])
-
-style.map( 'Treeview', background = [ ( 'selected', 'crimson' ) ] )
-
-style.configure( "Treeview.Heading", font = ( 'crystal', 10 ),background = 'mistyrose', foreground = 'black' )
+style.theme_use( 'tabs_and_treeview' )
 
 
 #  CONNECTING-AND-CREATING-SQLITE-DATABASE-------------------------------------------------
